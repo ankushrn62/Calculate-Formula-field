@@ -1,2 +1,6 @@
 Populating formula fields before Saving/creating/updating the record becuase formula fields are calculated only after creation and calcuated with new values after save in update case.
 So sometimes we need fresh value in the formula field before saving the record so this we can do with apex standard methods.
+
+Normally in Apex, when you modify an SObject in memory (without saving it to the DB), 
+Salesforce does not automatically update formula fields in that object. You’d need to query the record again to see formula values. 
+Formula.recalculateFormulas(List<SObject>); This method gives you an alternative: recalculate formulas in-memory.
