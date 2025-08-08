@@ -1,0 +1,2 @@
+Populating formula fields before Saving/creating/updating the record becuase formula fields are calculated only after creation and calcuated with new values after save in update case.
+So sometimes we need fresh value in the formula field before saving the record so this we can do with apex standard methods.
