@@ -4,3 +4,18 @@ So sometimes we need fresh value in the formula field before saving the record s
 Normally in Apex, when you modify an SObject in memory (without saving it to the DB), 
 Salesforce does not automatically update formula fields in that object. You’d need to query the record again to see formula values. 
 Formula.recalculateFormulas(List<SObject>); This method gives you an alternative: recalculate formulas in-memory.
+
+
+Formula.recalculateFormulas – Usage Notes
+1. What it does
+    Recalculates all formula fields on SObject records in memory (no database query needed).
+    Works for both existing and new (unsaved) records.
+    Returns a list of FormulaRecalcResult objects containing updated records.
+2. When to use
+    After changing field values in memory and needing up-to-date formula values without a SOQL query.
+    When building Invocable Apex for Flows to calculate formulas before saving records.
+    For new records that have not been inserted yet but require formula values for further logic.
+3. benefits
+    Avoids extra queries → reduces governor limit usage.
+    Works on unsaved records → no DML required.
+    Keeps formula fields accurate in Apex logic and Flow outputs.
